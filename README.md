@@ -1,8 +1,8 @@
-### PewDiePie vs T-Series live subscriber count
+# PewDiePie vs T-Series live subscriber count
 
-# Dependencies
+### Dependencies
 `pip install ssl`
 
 Thanks to ColdGrub1384 for major improvements
 
-# Don't forget to subscribe to pewds !
+### Don't forget to subscribe to pewds !
