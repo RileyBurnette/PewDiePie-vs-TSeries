@@ -30,7 +30,10 @@ try:
   from console import clear
 except:
   def clear():
-    sys.stdout.write(u"{}[2J{}[;H".format(chr(27), chr(27)))
+    if supports_color():
+      sys.stdout.write(u"{}[2J{}[;H".format(chr(27), chr(27)))
+    else:
+      print("")
   
 from time import sleep
 import ssl
@@ -47,10 +50,7 @@ def main():
   data2 = urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"tseries"+"&key="+key, context=context).read()
   subs2 = json.loads(data2)["items"][0]["statistics"]["subscriberCount"]
 
-  if supports_color():
-    clear()
-  else:
-    print("")
+  clear()
 
   if int(subs) < int(subs2):
     print("YouTube is dead")
