@@ -9,7 +9,7 @@ try:
   from console import clear
 except:
   def clear():
-    print(u"{}[2J{}[;H".format(chr(27), chr(27)))
+    print(u"{}[2J{}[;H".format(chr(27), chr(27)), end="")
   
 from time import sleep
 import ssl
