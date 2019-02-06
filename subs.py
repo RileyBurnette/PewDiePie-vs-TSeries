@@ -2,6 +2,8 @@
 sub to pewdiepie
 """
 
+import sys
+
 def supports_color():
   """
   Returns True if the running system's terminal supports color, and False
