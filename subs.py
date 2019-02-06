@@ -64,5 +64,8 @@ if "__main__" == __name__:
     print("Unsubscribe from T-Series")
   
 while True:
-  main()
-  sleep(0.1)
+  try:
+    main()
+    sleep(0.1)
+  except KeyboardInterrupt:
+    print("Don't forget to subsribe to PewDiePie!!!!")
