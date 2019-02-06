@@ -19,14 +19,18 @@ def supports_color():
   return True
 
 from sys import argv
-import urllib.request
 import json
+
+try:
+  from urllib.request import urlopen
+except:
+  from urllib import urlopen
 
 try:
   from console import clear
 except:
   def clear():
-    print(u"{}[2J{}[;H".format(chr(27), chr(27)), end="")
+    sys.stdout.write(u"{}[2J{}[;H".format(chr(27), chr(27)))
   
 from time import sleep
 import ssl
@@ -37,10 +41,10 @@ def main():
   pewdiepie = "pewdiepie"
   key = "AIzaSyDOi4pJwTjAQw4xQ3G0CAH_zpht6-ajVkQ"
 
-  data = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+pewdiepie+"&key="+key, context=context).read()
+  data = urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+pewdiepie+"&key="+key, context=context).read()
   subs = json.loads(data)["items"][0]["statistics"]["subscriberCount"]
 
-  data2 = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"tseries"+"&key="+key, context=context).read()
+  data2 = urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"tseries"+"&key="+key, context=context).read()
   subs2 = json.loads(data2)["items"][0]["statistics"]["subscriberCount"]
 
   if supports_color():
