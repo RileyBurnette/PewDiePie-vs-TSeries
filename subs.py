@@ -57,7 +57,7 @@ def main():
 
   print("PewDiePie" + " has " + "{:,d}".format(int(subs)) + " subscribers!")
   print("T-Series" + " has " + "{:,d}".format(int(subs2)) + " subscribers!")
-  print("Difference between PiewDiePie and T-Series:", "{:,d}".format(int(subs)-int(subs2)))
+  print("Difference between PewDiePie and T-Series:", "{:,d}".format(int(subs)-int(subs2)))
   
 if "__main__" == __name__:
   if "T-Gay" in argv:
