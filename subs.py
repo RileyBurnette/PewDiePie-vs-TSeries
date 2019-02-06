@@ -4,7 +4,13 @@
 from sys import argv
 import urllib.request
 import json
-from console import clear
+
+try:
+  from console import clear
+except:
+  def clear():
+    print(u"{}[2J{}[;H".format(chr(27), chr(27)))
+  
 from time import sleep
 import ssl
 
