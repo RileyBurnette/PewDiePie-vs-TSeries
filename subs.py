@@ -69,3 +69,4 @@ while True:
     sleep(0.1)
   except KeyboardInterrupt:
     print("Don't forget to subsribe to PewDiePie!!!!")
+    raise SystemExit
