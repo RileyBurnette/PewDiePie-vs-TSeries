@@ -1,6 +1,21 @@
+"""
+sub to pewdiepie
+"""
 
+def supports_color():
+  """
+  Returns True if the running system's terminal supports color, and False
+  otherwise.
+  """
+  plat = sys.platform
+  supported_platform = plat != 'Pocket PC' and (plat != 'win32' or
+                                                  'ANSICON' in os.environ)
+  # isatty is not always implemented, #6223.
+  is_a_tty = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
+  if not supported_platform or not is_a_tty:
+    return False
+  return True
 
-# sub to pewdiepie
 from sys import argv
 import urllib.request
 import json
@@ -26,7 +41,10 @@ def main():
   data2 = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"tseries"+"&key="+key, context=context).read()
   subs2 = json.loads(data2)["items"][0]["statistics"]["subscriberCount"]
 
-  clear()
+  if supports_color():
+    clear()
+  else:
+    print("")
 
   if int(subs) < int(subs2):
     print("YouTube is dead")
@@ -39,6 +57,6 @@ if "__main__" == __name__:
     print("Subscribe to PewDiePie.")
     print("Unsubscribe from T-Series")
   
-  while True:
-    main()
-    sleep(0.1)
+while True:
+  main()
+  sleep(0.1)
