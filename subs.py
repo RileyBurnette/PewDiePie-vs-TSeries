@@ -6,7 +6,10 @@ sub to pewdiepie
 import sys
 import urllib
 import os
+import configparser
 
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 def supports_color():
     """
@@ -47,7 +50,7 @@ context = ssl._create_unverified_context()
 
 
 def main():
-    key = "AIzaSyDOi4pJwTjAQw4xQ3G0CAH_zpht6-ajVkQ"
+    key = config.get("Youtube", "Key")
 
     data = urlopen(
         "https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=" + "pewdiepie" + "&key=" + key,
