@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
 """
 sub to pewdiepie
 """
 
 import sys
+import urllib
 
 def supports_color():
   """
@@ -70,4 +72,7 @@ while True:
     sleep(0.1)
   except KeyboardInterrupt:
     print("Don't forget to subsribe to PewDiePie!!!!")
+    raise SystemExit
+  except urllib.error.URLError as e:
+    print(e.reason)
     raise SystemExit
