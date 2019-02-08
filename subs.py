@@ -13,9 +13,9 @@ config.read('config.ini')
 
 def supports_color():
     """
-  Returns True if the running system's terminal supports color, and False
-  otherwise.
-  """
+    Returns True if the running system's terminal supports color, and False
+    otherwise.
+    """
     plat = sys.platform
     supported_platform = plat != 'Pocket PC' and (plat != 'win32' or
                                                   'ANSICON' in os.environ)
