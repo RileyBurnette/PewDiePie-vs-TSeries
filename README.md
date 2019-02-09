@@ -2,6 +2,7 @@
 
 ### Dependencies
 `pip install pyglet`
+
 For compiling, use nuitka:
 `pip install nuitka`
 
