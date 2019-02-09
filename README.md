@@ -3,6 +3,8 @@
 ### Dependencies
 `pip install pyglet`
 
+https://avbin.github.io/AVbin/Download.html
+
 For compiling, use nuitka:
 `pip install nuitka`
 
