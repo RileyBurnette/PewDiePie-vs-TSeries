@@ -7,9 +7,18 @@ import sys
 import urllib
 import os
 import configparser
+import pyglet 
 
 config = configparser.ConfigParser()
 config.read('config.ini')
+
+song = pyglet.media.load('disstrack.ogg')
+looper = pyglet.media.SourceGroup(song.audio_format, None)
+looper.loop = True
+looper.queue(song)
+p = pyglet.media.Player()
+p.queue(looper)
+p.play()
 
 def supports_color():
     """
