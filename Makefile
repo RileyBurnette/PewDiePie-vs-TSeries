@@ -11,3 +11,4 @@ install: all
 
 clean:
 	rm subcount
+	rm -r subcount.build
