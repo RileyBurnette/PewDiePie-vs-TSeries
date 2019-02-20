@@ -14,4 +14,4 @@ jobs:
             pipenv install
       - run:
           command: |
-          pipenv run python subcount.py --disable-audio --ci
+          pipenv run python subcount.py --ci
