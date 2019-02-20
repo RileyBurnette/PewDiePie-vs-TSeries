@@ -1,10 +1,10 @@
 INSTALLDIR=/usr/local/bin
 PYCOMPILER=nuitka3
-
+ARGS=
 
 
 all:
-	$(PYCOMPILER) subcount.py -o subcount
+	$(PYCOMPILER) $(ARGS) subcount.py -o subcount
 
 install: all
 	install -Dm755 subcount $(INSTALLDIR)
