@@ -9,9 +9,9 @@ jobs:
    steps:
       - checkout  # checkout source code to working directory
       - run:
-          command: |  # use pipenv to install dependencies
-            sudo pip install pyglet
-            pipenv install
+        command: |  # use pipenv to install dependencies
+          sudo pip install pyglet
+          pipenv install
       - run:
-          command: |
+        command: |
           pipenv run python subcount.py --ci
