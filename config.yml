@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/python:3.6.4 # every job must define an image for the docker executor and subsequent jobs may define a different image.
+        environment:
+          PIPENV_VENV_IN_PROJECT: true 
+   steps:
+      - checkout  # checkout source code to working directory
+      - run:
+          command: |  # use pipenv to install dependencies
+            sudo pip install pyglet
+            pipenv install
+      - run:
+          command: |
+          pipenv run python subcount.py --disable-audio --ci
