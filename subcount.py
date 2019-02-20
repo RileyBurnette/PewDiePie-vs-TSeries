@@ -12,13 +12,18 @@ import pyglet
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-song = pyglet.media.load('disstrack.ogg')
-looper = pyglet.media.SourceGroup(song.audio_format, None)
-looper.loop = True
-looper.queue(song)
-p = pyglet.media.Player()
-p.queue(looper)
-p.play()
+if "--ci" in sys.argv:
+    print("WARNING: Features such as loop or music are disabled in CI mode.")
+    disableloop = "yes"
+else:
+    song = pyglet.media.load('disstrack.ogg')
+    looper = pyglet.media.SourceGroup(song.audio_format, None)
+    looper.loop = True
+    looper.queue(song)
+    p = pyglet.media.Player()
+    p.queue(looper)
+    p.play()
+
 
 def supports_color():
     """
@@ -86,13 +91,17 @@ if "__main__" == __name__:
         print("Subscribe to PewDiePie.")
         print("Unsubscribe from T-Series")
 
-while True:
-    try:
+
+if disableloop == "yes":
+    main()
+else:
+    while True:
+     try:
         main()
         sleep(0.1)
-    except KeyboardInterrupt:
+     except KeyboardInterrupt:
         print("Don't forget to subsribe to PewDiePie!!!!")
         raise SystemExit
-    except urllib.error.URLError as e:
+     except urllib.error.URLError as e:
         print(e.reason)
         raise SystemExit
