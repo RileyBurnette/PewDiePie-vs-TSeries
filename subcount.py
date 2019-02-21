@@ -2,6 +2,7 @@
 """
 sub to pewdiepie
 """
+from typing import Any
 
 import sys
 import urllib
@@ -9,11 +10,13 @@ import os
 import configparser
 import pyglet 
 
+disableloop = "no"
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-if "--ci" in sys.argv:
-    print("WARNING: Features such as loop or music are disabled in CI mode.")
+
+if "--test" in sys.argv:
+    print('WARNING: Features such as loop or music are disabled in test mode.')
     disableloop = "yes"
 else:
     song = pyglet.media.load('disstrack.ogg')
@@ -21,6 +24,7 @@ else:
     looper.loop = True
     looper.queue(song)
     p = pyglet.media.Player()
+    assert isinstance(looper, object)
     p.queue(looper)
     p.play()
 
